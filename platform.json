@@ -1,4 +1,5 @@
 {
+  "api_path_prefix": "/opendota/",
   "async_class_name": "AsyncOpenDotaClient",
   "class_name": "OpenDotaClient",
   "contract_revision": "sha256:bd541087bc32280cd45ea20c8afb0f976d4a9b54df109f589f4a858eb14b9c3a",

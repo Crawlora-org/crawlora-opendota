@@ -334,8 +334,8 @@ export interface ModelOpendotaLiveMatch {
 export interface ModelOpendotaLivePlayer {
   "hero_id"?: number;
   "name"?: string;
-  "team_code"?: "0" | "1";
-  "team_slot"?: "1" | "2" | "3" | "4" | "5";
+  "team_code"?: 0 | 1;
+  "team_slot"?: 1 | 2 | 3 | 4 | 5;
 }
 
 export interface ModelOpendotaLeaguesResponse {
@@ -478,7 +478,7 @@ export interface ModelOpendotaPickWin {
 }
 
 export interface ModelOpendotaRankBracket {
-  "bracket"?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
+  "bracket"?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
   "name"?: "Herald" | "Guardian" | "Crusader" | "Archon" | "Legend" | "Ancient" | "Divine" | "Immortal";
   "picks"?: number;
   "win_rate_percent"?: number;
@@ -775,8 +775,8 @@ export interface OpendotaProPlayersParams {
 
 export type OpendotaPublicMatchesResponse = CrawloraResponse<ModelAppResponse & { "data"?: ModelOpendotaPublicMatchesResponse }>;
 export interface OpendotaPublicMatchesParams {
-  "min_rank"?: "11" | "12" | "13" | "14" | "15" | "21" | "22" | "23" | "24" | "25" | "31" | "32" | "33" | "34" | "35" | "41" | "42" | "43" | "44" | "45" | "51" | "52" | "53" | "54" | "55" | "61" | "62" | "63" | "64" | "65" | "71" | "72" | "73" | "74" | "75" | "81" | "82" | "83" | "84" | "85";
-  "max_rank"?: "11" | "12" | "13" | "14" | "15" | "21" | "22" | "23" | "24" | "25" | "31" | "32" | "33" | "34" | "35" | "41" | "42" | "43" | "44" | "45" | "51" | "52" | "53" | "54" | "55" | "61" | "62" | "63" | "64" | "65" | "71" | "72" | "73" | "74" | "75" | "81" | "82" | "83" | "84" | "85";
+  "min_rank"?: 11 | 12 | 13 | 14 | 15 | 21 | 22 | 23 | 24 | 25 | 31 | 32 | 33 | 34 | 35 | 41 | 42 | 43 | 44 | 45 | 51 | 52 | 53 | 54 | 55 | 61 | 62 | 63 | 64 | 65 | 71 | 72 | 73 | 74 | 75 | 81 | 82 | 83 | 84 | 85;
+  "max_rank"?: 11 | 12 | 13 | 14 | 15 | 21 | 22 | 23 | 24 | 25 | 31 | 32 | 33 | 34 | 35 | 41 | 42 | 43 | 44 | 45 | 51 | 52 | 53 | 54 | 55 | 61 | 62 | 63 | 64 | 65 | 71 | 72 | 73 | 74 | 75 | 81 | 82 | 83 | 84 | 85;
   "less_than_match_id"?: number;
 }
 
