@@ -1,0 +1,47 @@
+{
+  "name": "crawlora/opendota",
+  "description": "Crawlora OpenDota API client with 30 endpoints for Dota 2 matches, heroes, players, teams, leagues, statistics, and game constants",
+  "keywords": [
+    "crawlora",
+    "api-client",
+    "sdk",
+    "web-scraping",
+    "scraping-api",
+    "opendota",
+    "opendota-api",
+    "opendota-scraper",
+    "opendota-data",
+    "opendota-dota-2-matches",
+    "opendota-heroes",
+    "opendota-players",
+    "opendota-teams",
+    "opendota-leagues",
+    "opendota-statistics",
+    "opendota-game-constants"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Crawlora\\Opendota\\": "php/src/Crawlora/Opendota/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Crawlora\\Opendota\\Tests\\": "php/tests/"
+    }
+  },
+  "scripts": {
+    "test": "php php/tests/client_test.php"
+  },
+  "homepage": "https://crawlora.net/?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=opendota-php-homepage",
+  "support": {
+    "source": "https://github.com/Crawlora-org/crawlora-opendota",
+    "docs": "https://crawlora.net/docs?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=opendota-php-api-docs"
+  }
+}

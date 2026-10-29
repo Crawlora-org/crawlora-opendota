@@ -1,0 +1,1576 @@
+{
+  "platform": "opendota",
+  "operationCount": 30,
+  "operationIds": [
+    "opendota-abilities",
+    "opendota-benchmarks",
+    "opendota-constants",
+    "opendota-find-matches",
+    "opendota-hero-descriptions",
+    "opendota-hero-durations",
+    "opendota-hero-items",
+    "opendota-hero-matches",
+    "opendota-hero-matchups",
+    "opendota-hero-stats",
+    "opendota-heroes",
+    "opendota-items",
+    "opendota-league",
+    "opendota-league-match-ids",
+    "opendota-league-matches",
+    "opendota-leagues",
+    "opendota-live",
+    "opendota-match",
+    "opendota-patch-notes",
+    "opendota-pro-matches",
+    "opendota-pro-players",
+    "opendota-public-matches",
+    "opendota-rank-distribution",
+    "opendota-records",
+    "opendota-scenarios",
+    "opendota-team",
+    "opendota-team-heroes",
+    "opendota-team-matches",
+    "opendota-team-players",
+    "opendota-teams"
+  ],
+  "methods": {
+    "abilities": "opendota-abilities",
+    "benchmarks": "opendota-benchmarks",
+    "constants": "opendota-constants",
+    "find_matches": "opendota-find-matches",
+    "hero_descriptions": "opendota-hero-descriptions",
+    "hero_durations": "opendota-hero-durations",
+    "hero_items": "opendota-hero-items",
+    "hero_matches": "opendota-hero-matches",
+    "hero_matchups": "opendota-hero-matchups",
+    "hero_stats": "opendota-hero-stats",
+    "heroes": "opendota-heroes",
+    "items": "opendota-items",
+    "league": "opendota-league",
+    "league_match_ids": "opendota-league-match-ids",
+    "league_matches": "opendota-league-matches",
+    "leagues": "opendota-leagues",
+    "live": "opendota-live",
+    "match": "opendota-match",
+    "patch_notes": "opendota-patch-notes",
+    "pro_matches": "opendota-pro-matches",
+    "pro_players": "opendota-pro-players",
+    "public_matches": "opendota-public-matches",
+    "rank_distribution": "opendota-rank-distribution",
+    "records": "opendota-records",
+    "scenarios": "opendota-scenarios",
+    "team": "opendota-team",
+    "team_heroes": "opendota-team-heroes",
+    "team_matches": "opendota-team-matches",
+    "team_players": "opendota-team-players",
+    "teams": "opendota-teams"
+  },
+  "operations": {
+    "opendota-abilities": {
+      "id": "opendota-abilities",
+      "method": "GET",
+      "path": "/opendota/abilities",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Case-insensitive search on the ability key or display name, for example blink",
+          "in": "query",
+          "name": "q",
+          "type": "string"
+        },
+        {
+          "description": "Number of abilities to return, 1 to 500; defaults to 50",
+          "in": "query",
+          "maximum": 500,
+          "minimum": 1,
+          "name": "limit",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-benchmarks": {
+      "id": "opendota-benchmarks",
+      "method": "GET",
+      "path": "/opendota/benchmarks",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "hero_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "bracket",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "role",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "core",
+            "support"
+          ]
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive hero ID from opendota-heroes",
+          "in": "query",
+          "name": "hero_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 1
+        },
+        {
+          "description": "Rank bracket 1 (Herald) to 8 (Immortal) to benchmark against; omit for all ranks",
+          "in": "query",
+          "maximum": 8,
+          "minimum": 1,
+          "name": "bracket",
+          "type": "integer"
+        },
+        {
+          "description": "Role of the games counted; one of core, support; omit for all roles",
+          "enum": [
+            "core",
+            "support"
+          ],
+          "in": "query",
+          "name": "role",
+          "type": "string"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-constants": {
+      "id": "opendota-constants",
+      "method": "GET",
+      "path": "/opendota/constants",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "resource",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "game_mode",
+            "lobby_type",
+            "patch",
+            "region",
+            "cluster",
+            "item_ids",
+            "ability_ids",
+            "permanent_buffs",
+            "xp_level",
+            "countries",
+            "order_types",
+            "player_colors",
+            "chat_wheel",
+            "item_colors",
+            "ancients",
+            "skillshots"
+          ]
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Lookup table; one of game_mode, lobby_type, patch, region, cluster, item_ids, ability_ids, permanent_buffs, xp_level, countries, order_types, player_colors, chat_wheel, item_colors, ancients, skillshots",
+          "enum": [
+            "game_mode",
+            "lobby_type",
+            "patch",
+            "region",
+            "cluster",
+            "item_ids",
+            "ability_ids",
+            "permanent_buffs",
+            "xp_level",
+            "countries",
+            "order_types",
+            "player_colors",
+            "chat_wheel",
+            "item_colors",
+            "ancients",
+            "skillshots"
+          ],
+          "in": "query",
+          "name": "resource",
+          "required": true,
+          "type": "string",
+          "x-example": "game_mode"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-find-matches": {
+      "id": "opendota-find-matches",
+      "method": "GET",
+      "path": "/opendota/find-matches",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "team_a",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "team_b",
+          "in": "query",
+          "type": "string"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Comma-separated hero ids (up to 5) that must be on team A",
+          "in": "query",
+          "name": "team_a",
+          "type": "string",
+          "x-example": "1,2"
+        },
+        {
+          "description": "Comma-separated hero ids (up to 5) that must be on team B",
+          "in": "query",
+          "name": "team_b",
+          "type": "string",
+          "x-example": "3"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-hero-descriptions": {
+      "id": "opendota-hero-descriptions",
+      "method": "GET",
+      "path": "/opendota/hero-descriptions",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "hero_id",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "include_lore",
+          "in": "query",
+          "type": "boolean"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive hero id from opendota-heroes; omit it for all heroes",
+          "in": "query",
+          "minimum": 1,
+          "name": "hero_id",
+          "type": "integer",
+          "x-example": 1
+        },
+        {
+          "description": "true adds each hero's lore text; defaults to false",
+          "in": "query",
+          "name": "include_lore",
+          "type": "boolean"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-hero-durations": {
+      "id": "opendota-hero-durations",
+      "method": "GET",
+      "path": "/opendota/hero-durations",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "hero_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive hero ID from opendota-heroes",
+          "in": "query",
+          "name": "hero_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 1
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-hero-items": {
+      "id": "opendota-hero-items",
+      "method": "GET",
+      "path": "/opendota/hero-items",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "hero_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive hero ID from opendota-heroes",
+          "in": "query",
+          "name": "hero_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 1
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-hero-matches": {
+      "id": "opendota-hero-matches",
+      "method": "GET",
+      "path": "/opendota/hero-matches",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "hero_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive hero ID from opendota-heroes",
+          "in": "query",
+          "name": "hero_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 1
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-hero-matchups": {
+      "id": "opendota-hero-matchups",
+      "method": "GET",
+      "path": "/opendota/hero-matchups",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "hero_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive hero ID from opendota-heroes",
+          "in": "query",
+          "name": "hero_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 1
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-hero-stats": {
+      "id": "opendota-hero-stats",
+      "method": "GET",
+      "path": "/opendota/hero-stats",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "primary_attr",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "agi",
+            "all",
+            "int",
+            "str"
+          ]
+        },
+        {
+          "name": "attack_type",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "Melee",
+            "Ranged"
+          ]
+        },
+        {
+          "name": "role",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "Carry",
+            "Disabler",
+            "Durable",
+            "Escape",
+            "Initiator",
+            "Nuker",
+            "Pusher",
+            "Support"
+          ]
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "id",
+            "name",
+            "pro_pick",
+            "pro_win",
+            "pro_ban",
+            "pro_win_rate",
+            "pub_pick",
+            "pub_win",
+            "pub_win_rate",
+            "turbo_pick",
+            "turbo_win_rate"
+          ]
+        },
+        {
+          "name": "desc",
+          "in": "query",
+          "type": "boolean"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Primary attribute filter; one of agi, all, int, str",
+          "enum": [
+            "agi",
+            "all",
+            "int",
+            "str"
+          ],
+          "in": "query",
+          "name": "primary_attr",
+          "type": "string"
+        },
+        {
+          "description": "Attack type filter; one of Melee, Ranged",
+          "enum": [
+            "Melee",
+            "Ranged"
+          ],
+          "in": "query",
+          "name": "attack_type",
+          "type": "string"
+        },
+        {
+          "description": "Role filter; one of Carry, Disabler, Durable, Escape, Initiator, Nuker, Pusher, Support",
+          "enum": [
+            "Carry",
+            "Disabler",
+            "Durable",
+            "Escape",
+            "Initiator",
+            "Nuker",
+            "Pusher",
+            "Support"
+          ],
+          "in": "query",
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "description": "Sort key; one of id, name, pro_pick, pro_win, pro_ban, pro_win_rate, pub_pick, pub_win, pub_win_rate, turbo_pick, turbo_win_rate; defaults to id",
+          "enum": [
+            "id",
+            "name",
+            "pro_pick",
+            "pro_win",
+            "pro_ban",
+            "pro_win_rate",
+            "pub_pick",
+            "pub_win",
+            "pub_win_rate",
+            "turbo_pick",
+            "turbo_win_rate"
+          ],
+          "in": "query",
+          "name": "sort",
+          "type": "string"
+        },
+        {
+          "description": "Sort descending (the default for every key except id and name)",
+          "in": "query",
+          "name": "desc",
+          "type": "boolean"
+        },
+        {
+          "description": "Number of heroes to return, 1 to 200; defaults to all",
+          "in": "query",
+          "maximum": 200,
+          "minimum": 1,
+          "name": "limit",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-heroes": {
+      "id": "opendota-heroes",
+      "method": "GET",
+      "path": "/opendota/heroes",
+      "pathParams": [],
+      "queryParams": [],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-items": {
+      "id": "opendota-items",
+      "method": "GET",
+      "path": "/opendota/items",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "quality",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Case-insensitive search on the item key or display name, for example blink",
+          "in": "query",
+          "name": "q",
+          "type": "string"
+        },
+        {
+          "description": "Item quality from the qualities list in the response; currently artifact, common, component, consumable, consumable;laning, epic, rare, secret_shop",
+          "in": "query",
+          "name": "quality",
+          "type": "string"
+        },
+        {
+          "description": "Number of items to return, 1 to 500; defaults to 50",
+          "in": "query",
+          "maximum": 500,
+          "minimum": 1,
+          "name": "limit",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-league": {
+      "id": "opendota-league",
+      "method": "GET",
+      "path": "/opendota/league",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "league_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive OpenDota league ID from opendota-leagues",
+          "in": "query",
+          "name": "league_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 20395
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-league-match-ids": {
+      "id": "opendota-league-match-ids",
+      "method": "GET",
+      "path": "/opendota/league-match-ids",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "league_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive OpenDota league ID from opendota_leagues",
+          "format": "int64",
+          "in": "query",
+          "name": "league_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 20395
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-league-matches": {
+      "id": "opendota-league-matches",
+      "method": "GET",
+      "path": "/opendota/league-matches",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "league_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive league ID from opendota_leagues",
+          "format": "int64",
+          "in": "query",
+          "name": "league_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 20395
+        },
+        {
+          "description": "Optional positive team ID; keeps matches where this team is Radiant or Dire",
+          "format": "int64",
+          "in": "query",
+          "name": "team_id",
+          "type": "integer",
+          "x-example": 8255888
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-leagues": {
+      "id": "opendota-leagues",
+      "method": "GET",
+      "path": "/opendota/leagues",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "tier",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "amateur",
+            "excluded",
+            "premium",
+            "professional",
+            "unrated"
+          ]
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Optional exact source tier filter",
+          "enum": [
+            "amateur",
+            "excluded",
+            "premium",
+            "professional",
+            "unrated"
+          ],
+          "in": "query",
+          "name": "tier",
+          "type": "string"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-live": {
+      "id": "opendota-live",
+      "method": "GET",
+      "path": "/opendota/live",
+      "pathParams": [],
+      "queryParams": [],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-match": {
+      "id": "opendota-match",
+      "method": "GET",
+      "path": "/opendota/match",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive OpenDota match ID from live, pro-match, league-match, or league-match-ID results",
+          "format": "int64",
+          "in": "query",
+          "name": "id",
+          "required": true,
+          "type": "integer",
+          "x-example": 9063495955
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-patch-notes": {
+      "id": "opendota-patch-notes",
+      "method": "GET",
+      "path": "/opendota/patch-notes",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "patch",
+          "in": "query",
+          "type": "string"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Patch key such as 7_38 or 7_06d; omit it to list every patch key",
+          "in": "query",
+          "name": "patch",
+          "type": "string",
+          "x-example": "7_38"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-pro-matches": {
+      "id": "opendota-pro-matches",
+      "method": "GET",
+      "path": "/opendota/pro-matches",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "less_than_match_id",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Return professional matches with IDs lower than this positive match ID; copy next_less_than_match_id from the previous response",
+          "format": "int64",
+          "in": "query",
+          "name": "less_than_match_id",
+          "type": "integer",
+          "x-example": 9063495955
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-pro-players": {
+      "id": "opendota-pro-players",
+      "method": "GET",
+      "path": "/opendota/pro-players",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Optional positive team ID from opendota_teams",
+          "format": "int64",
+          "in": "query",
+          "name": "team_id",
+          "type": "integer",
+          "x-example": 8255888
+        },
+        {
+          "description": "Case-insensitive substring in player/team names, team tags or country codes; maximum 200 characters",
+          "in": "query",
+          "name": "q",
+          "type": "string"
+        },
+        {
+          "description": "Local page size, default 50, maximum 100",
+          "in": "query",
+          "name": "limit",
+          "type": "integer",
+          "x-example": 50
+        },
+        {
+          "description": "Zero-based local offset, default 0",
+          "in": "query",
+          "name": "offset",
+          "type": "integer",
+          "x-example": 0
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-public-matches": {
+      "id": "opendota-public-matches",
+      "method": "GET",
+      "path": "/opendota/public-matches",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "min_rank",
+          "in": "query",
+          "type": "integer",
+          "enum": [
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85"
+          ]
+        },
+        {
+          "name": "max_rank",
+          "in": "query",
+          "type": "integer",
+          "enum": [
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85"
+          ]
+        },
+        {
+          "name": "less_than_match_id",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Lowest average rank tier, medal 1-8 times ten plus stars 1-5",
+          "enum": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            21,
+            22,
+            23,
+            24,
+            25,
+            31,
+            32,
+            33,
+            34,
+            35,
+            41,
+            42,
+            43,
+            44,
+            45,
+            51,
+            52,
+            53,
+            54,
+            55,
+            61,
+            62,
+            63,
+            64,
+            65,
+            71,
+            72,
+            73,
+            74,
+            75,
+            81,
+            82,
+            83,
+            84,
+            85
+          ],
+          "in": "query",
+          "name": "min_rank",
+          "type": "integer"
+        },
+        {
+          "description": "Highest average rank tier, same form as min_rank; not below min_rank",
+          "enum": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            21,
+            22,
+            23,
+            24,
+            25,
+            31,
+            32,
+            33,
+            34,
+            35,
+            41,
+            42,
+            43,
+            44,
+            45,
+            51,
+            52,
+            53,
+            54,
+            55,
+            61,
+            62,
+            63,
+            64,
+            65,
+            71,
+            72,
+            73,
+            74,
+            75,
+            81,
+            82,
+            83,
+            84,
+            85
+          ],
+          "in": "query",
+          "name": "max_rank",
+          "type": "integer"
+        },
+        {
+          "description": "Return matches older than this match id",
+          "in": "query",
+          "name": "less_than_match_id",
+          "type": "integer",
+          "x-example": 9066000000
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-rank-distribution": {
+      "id": "opendota-rank-distribution",
+      "method": "GET",
+      "path": "/opendota/rank-distribution",
+      "pathParams": [],
+      "queryParams": [],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-records": {
+      "id": "opendota-records",
+      "method": "GET",
+      "path": "/opendota/records",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "field",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "kills",
+            "deaths",
+            "assists",
+            "last_hits",
+            "denies",
+            "gold_per_min",
+            "xp_per_min",
+            "hero_damage",
+            "tower_damage",
+            "hero_healing",
+            "duration"
+          ]
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Record field; one of kills, deaths, assists, last_hits, denies, gold_per_min, xp_per_min, hero_damage, tower_damage, hero_healing, duration",
+          "enum": [
+            "kills",
+            "deaths",
+            "assists",
+            "last_hits",
+            "denies",
+            "gold_per_min",
+            "xp_per_min",
+            "hero_damage",
+            "tower_damage",
+            "hero_healing",
+            "duration"
+          ],
+          "in": "query",
+          "name": "field",
+          "required": true,
+          "type": "string",
+          "x-example": "kills"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-scenarios": {
+      "id": "opendota-scenarios",
+      "method": "GET",
+      "path": "/opendota/scenarios",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "kind",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "item-timings",
+            "lane-roles",
+            "misc"
+          ]
+        },
+        {
+          "name": "hero_id",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "item",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "lane_role",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "scenario",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "courier_kill",
+            "first_blood",
+            "neg_chat_1min",
+            "pos_chat_1min"
+          ]
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Dataset; one of item-timings, lane-roles, misc",
+          "enum": [
+            "item-timings",
+            "lane-roles",
+            "misc"
+          ],
+          "in": "query",
+          "name": "kind",
+          "required": true,
+          "type": "string",
+          "x-example": "item-timings"
+        },
+        {
+          "description": "Positive hero ID from opendota-heroes; item-timings and lane-roles only",
+          "in": "query",
+          "name": "hero_id",
+          "type": "integer",
+          "x-example": 1
+        },
+        {
+          "description": "Item name from opendota-constants item_ids, for example bfury; item-timings only",
+          "in": "query",
+          "name": "item",
+          "type": "string"
+        },
+        {
+          "description": "Lane role 1 to 4 (1 safe lane, 2 mid, 3 off lane, 4 jungle); lane-roles only",
+          "in": "query",
+          "maximum": 4,
+          "minimum": 1,
+          "name": "lane_role",
+          "type": "integer"
+        },
+        {
+          "description": "Scenario; one of courier_kill, first_blood, neg_chat_1min, pos_chat_1min; misc only",
+          "enum": [
+            "courier_kill",
+            "first_blood",
+            "neg_chat_1min",
+            "pos_chat_1min"
+          ],
+          "in": "query",
+          "name": "scenario",
+          "type": "string"
+        },
+        {
+          "description": "Number of rows to return, 1 to 2000, most games first; defaults to all",
+          "in": "query",
+          "maximum": 2000,
+          "minimum": 1,
+          "name": "limit",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-team": {
+      "id": "opendota-team",
+      "method": "GET",
+      "path": "/opendota/team",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive OpenDota team ID from opendota_teams or a match response",
+          "format": "int64",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 8255888
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-team-heroes": {
+      "id": "opendota-team-heroes",
+      "method": "GET",
+      "path": "/opendota/team-heroes",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive OpenDota team ID from opendota-teams or a match response",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 8255888
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-team-matches": {
+      "id": "opendota-team-matches",
+      "method": "GET",
+      "path": "/opendota/team-matches",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive OpenDota team ID from opendota_teams or a match response",
+          "format": "int64",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 8255888
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-team-players": {
+      "id": "opendota-team-players",
+      "method": "GET",
+      "path": "/opendota/team-players",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Positive OpenDota team ID from opendota-teams or a match response",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 8255888
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "opendota-teams": {
+      "id": "opendota-teams",
+      "method": "GET",
+      "path": "/opendota/teams",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Zero-based page index; defaults to 0",
+          "format": "int64",
+          "in": "query",
+          "name": "page",
+          "type": "integer",
+          "x-example": 0
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    }
+  }
+}

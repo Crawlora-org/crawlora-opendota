@@ -1,0 +1,4729 @@
+{
+  "basePath": "/api/v1",
+  "definitions": {
+    "app.Response": {
+      "description": "The Response struct is used for wrapping the API response with a code, message, and data.",
+      "properties": {
+        "code": {
+          "description": "Code is the HTTP status code or a custom code used to indicate the result of the request\n@example 200",
+          "type": "integer"
+        },
+        "data": {
+          "description": "Data is the response data (can be any object or null)\n@example {\"id\": 1, \"name\": \"John Doe\"}"
+        },
+        "msg": {
+          "description": "Msg is the message that describes the result of the request\n@example \"Request successful\""
+        }
+      },
+      "type": "object"
+    },
+    "opendota.AbilitiesResponse": {
+      "properties": {
+        "abilities": {
+          "items": {
+            "$ref": "#/definitions/opendota.AbilitySummary"
+          },
+          "type": "array"
+        },
+        "count": {
+          "example": 50,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "total": {
+          "example": 2804,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.AbilitySummary": {
+      "properties": {
+        "behavior": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bkb_pierce": {
+          "example": "Yes",
+          "type": "string"
+        },
+        "cooldown": {
+          "example": "15 12 9 6",
+          "type": "string"
+        },
+        "damage_type": {
+          "example": "Magical",
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dispellable": {
+          "example": "No",
+          "type": "string"
+        },
+        "innate": {
+          "example": false,
+          "type": "boolean"
+        },
+        "key": {
+          "example": "antimage_blink",
+          "type": "string"
+        },
+        "mana_cost": {
+          "example": "60 70 80 90",
+          "type": "string"
+        },
+        "name": {
+          "example": "Blink",
+          "type": "string"
+        },
+        "target_team": {
+          "example": "Enemy",
+          "type": "string"
+        },
+        "target_type": {
+          "example": "Hero",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.AghanimUpgrade": {
+      "properties": {
+        "available": {
+          "example": true,
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "new_skill": {
+          "example": false,
+          "type": "boolean"
+        },
+        "skill_name": {
+          "example": "Blink",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.Benchmark": {
+      "properties": {
+        "metric": {
+          "example": "gold_per_min",
+          "type": "string"
+        },
+        "points": {
+          "items": {
+            "$ref": "#/definitions/opendota.BenchmarkPoint"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.BenchmarkPoint": {
+      "properties": {
+        "percentile": {
+          "example": 0.5,
+          "type": "number"
+        },
+        "value": {
+          "example": 545.5,
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.BenchmarksResponse": {
+      "properties": {
+        "benchmarks": {
+          "items": {
+            "$ref": "#/definitions/opendota.Benchmark"
+          },
+          "type": "array"
+        },
+        "bracket": {
+          "example": 4,
+          "type": "integer"
+        },
+        "bracket_name": {
+          "example": "Archon",
+          "type": "string"
+        },
+        "count": {
+          "example": 10,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "hero_name": {
+          "example": "Anti-Mage",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "core",
+            "support"
+          ],
+          "example": "core",
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ConstantEntry": {
+      "properties": {
+        "balanced": {
+          "example": true,
+          "type": "boolean"
+        },
+        "date": {
+          "example": "2024-08-14T00:00:00Z",
+          "type": "string"
+        },
+        "id": {
+          "example": "2",
+          "type": "string"
+        },
+        "name": {
+          "example": "game_mode_captains_mode",
+          "type": "string"
+        },
+        "text": {
+          "example": "Careful!",
+          "type": "string"
+        },
+        "value": {
+          "example": 240,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ConstantsResponse": {
+      "properties": {
+        "count": {
+          "example": 26,
+          "type": "integer"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/opendota.ConstantEntry"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "resource": {
+          "example": "game_mode",
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.DistributionsResponse": {
+      "properties": {
+        "count": {
+          "example": 36,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "ranks": {
+          "items": {
+            "$ref": "#/definitions/opendota.RankTierRow"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "total_players": {
+          "example": 8745631,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.DurationBin": {
+      "properties": {
+        "games": {
+          "example": 2400,
+          "type": "integer"
+        },
+        "start_minute": {
+          "example": 20,
+          "type": "integer"
+        },
+        "win_rate_percent": {
+          "example": 54.17,
+          "type": "number"
+        },
+        "wins": {
+          "example": 1300,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.FindMatchRow": {
+      "properties": {
+        "dire": {
+          "items": {
+            "$ref": "#/definitions/opendota.PickedHero"
+          },
+          "type": "array"
+        },
+        "match_id": {
+          "example": 9066484102,
+          "type": "integer"
+        },
+        "radiant": {
+          "items": {
+            "$ref": "#/definitions/opendota.PickedHero"
+          },
+          "type": "array"
+        },
+        "radiant_win": {
+          "example": true,
+          "type": "boolean"
+        },
+        "start_time": {
+          "example": "2026-10-29T00:37:42Z",
+          "type": "string"
+        },
+        "team_a_side": {
+          "enum": [
+            "radiant",
+            "dire"
+          ],
+          "example": "dire",
+          "type": "string"
+        },
+        "team_a_win": {
+          "example": false,
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.FindMatchesResponse": {
+      "properties": {
+        "count": {
+          "example": 20,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/opendota.FindMatchRow"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team_a_hero_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "team_b_hero_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.Hero": {
+      "properties": {
+        "attack_type": {
+          "enum": [
+            "Melee",
+            "Ranged"
+          ],
+          "example": "Melee",
+          "type": "string"
+        },
+        "id": {
+          "example": 93,
+          "type": "integer"
+        },
+        "localized_name": {
+          "example": "Slark",
+          "type": "string"
+        },
+        "name": {
+          "example": "npc_dota_hero_slark",
+          "type": "string"
+        },
+        "primary_attr": {
+          "enum": [
+            "agi",
+            "all",
+            "int",
+            "str"
+          ],
+          "example": "agi",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroDescription": {
+      "properties": {
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "key": {
+          "example": "antimage",
+          "type": "string"
+        },
+        "lore": {
+          "type": "string"
+        },
+        "name": {
+          "example": "npc_dota_hero_antimage",
+          "type": "string"
+        },
+        "scepter": {
+          "$ref": "#/definitions/opendota.AghanimUpgrade"
+        },
+        "shard": {
+          "$ref": "#/definitions/opendota.AghanimUpgrade"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroDescriptionsResponse": {
+      "properties": {
+        "count": {
+          "example": 127,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "heroes": {
+          "items": {
+            "$ref": "#/definitions/opendota.HeroDescription"
+          },
+          "type": "array"
+        },
+        "include_lore": {
+          "example": false,
+          "type": "boolean"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroDurationsResponse": {
+      "properties": {
+        "bins": {
+          "items": {
+            "$ref": "#/definitions/opendota.DurationBin"
+          },
+          "type": "array"
+        },
+        "count": {
+          "example": 23,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroItemsResponse": {
+      "properties": {
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "phases": {
+          "items": {
+            "$ref": "#/definitions/opendota.ItemPhase"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroMatchRow": {
+      "properties": {
+        "assists": {
+          "example": 5,
+          "type": "integer"
+        },
+        "deaths": {
+          "example": 9,
+          "type": "integer"
+        },
+        "duration_seconds": {
+          "example": 2767,
+          "type": "integer"
+        },
+        "kills": {
+          "example": 5,
+          "type": "integer"
+        },
+        "league_id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "league_name": {
+          "example": "PARI UNIVERSE by FISSURE",
+          "type": "string"
+        },
+        "match_id": {
+          "example": 9066084051,
+          "type": "integer"
+        },
+        "played_radiant": {
+          "example": false,
+          "type": "boolean"
+        },
+        "start_time": {
+          "example": "2026-10-28T16:08:19Z",
+          "type": "string"
+        },
+        "won": {
+          "example": false,
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroMatchesResponse": {
+      "properties": {
+        "count": {
+          "example": 100,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "localized_name": {
+          "example": "Anti-Mage",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/opendota.HeroMatchRow"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroMatchupsResponse": {
+      "properties": {
+        "count": {
+          "example": 126,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "matchups": {
+          "items": {
+            "$ref": "#/definitions/opendota.HeroRecord"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroRecord": {
+      "properties": {
+        "games": {
+          "example": 82,
+          "type": "integer"
+        },
+        "hero_id": {
+          "example": 17,
+          "type": "integer"
+        },
+        "localized_name": {
+          "example": "Storm Spirit",
+          "type": "string"
+        },
+        "win_rate_percent": {
+          "example": 50,
+          "type": "number"
+        },
+        "wins": {
+          "example": 41,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroStat": {
+      "properties": {
+        "attack_range": {
+          "example": 150,
+          "type": "integer"
+        },
+        "attack_type": {
+          "enum": [
+            "Melee",
+            "Ranged"
+          ],
+          "example": "Melee",
+          "type": "string"
+        },
+        "base_armor": {
+          "example": 2,
+          "type": "number"
+        },
+        "base_attack_max": {
+          "example": 33,
+          "type": "integer"
+        },
+        "base_attack_min": {
+          "example": 29,
+          "type": "integer"
+        },
+        "base_health": {
+          "example": 120,
+          "type": "integer"
+        },
+        "base_mana": {
+          "example": 75,
+          "type": "integer"
+        },
+        "id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "localized_name": {
+          "example": "Anti-Mage",
+          "type": "string"
+        },
+        "move_speed": {
+          "example": 310,
+          "type": "integer"
+        },
+        "name": {
+          "example": "npc_dota_hero_antimage",
+          "type": "string"
+        },
+        "primary_attr": {
+          "enum": [
+            "agi",
+            "all",
+            "int",
+            "str"
+          ],
+          "example": "agi",
+          "type": "string"
+        },
+        "pro": {
+          "$ref": "#/definitions/opendota.PickWin"
+        },
+        "public": {
+          "$ref": "#/definitions/opendota.PickWin"
+        },
+        "rank_brackets": {
+          "items": {
+            "$ref": "#/definitions/opendota.RankBracket"
+          },
+          "type": "array"
+        },
+        "roles": {
+          "example": [
+            "Carry"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "turbo": {
+          "$ref": "#/definitions/opendota.PickWin"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroStatsResponse": {
+      "properties": {
+        "count": {
+          "example": 127,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "heroes": {
+          "items": {
+            "$ref": "#/definitions/opendota.HeroStat"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.HeroesResponse": {
+      "properties": {
+        "count": {
+          "example": 127,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "heroes": {
+          "items": {
+            "$ref": "#/definitions/opendota.Hero"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ItemAbility": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "title": {
+          "example": "Blink",
+          "type": "string"
+        },
+        "type": {
+          "example": "active",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ItemAttribute": {
+      "properties": {
+        "key": {
+          "example": "blink_range",
+          "type": "string"
+        },
+        "value": {
+          "example": "1200",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ItemCount": {
+      "properties": {
+        "count": {
+          "example": 97,
+          "type": "integer"
+        },
+        "item_id": {
+          "example": 63,
+          "type": "integer"
+        },
+        "name": {
+          "example": "power_treads",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ItemPhase": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/opendota.ItemCount"
+          },
+          "type": "array"
+        },
+        "phase": {
+          "enum": [
+            "start_game",
+            "early_game",
+            "mid_game",
+            "late_game"
+          ],
+          "example": "early_game",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ItemSummary": {
+      "properties": {
+        "abilities": {
+          "items": {
+            "$ref": "#/definitions/opendota.ItemAbility"
+          },
+          "type": "array"
+        },
+        "attributes": {
+          "items": {
+            "$ref": "#/definitions/opendota.ItemAttribute"
+          },
+          "type": "array"
+        },
+        "behavior": {
+          "example": "Point Target",
+          "type": "string"
+        },
+        "components": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cooldown": {
+          "example": "15",
+          "type": "string"
+        },
+        "cost_gold": {
+          "example": 2250,
+          "type": "integer"
+        },
+        "id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "key": {
+          "example": "blink",
+          "type": "string"
+        },
+        "mana_cost": {
+          "example": "0",
+          "type": "string"
+        },
+        "name": {
+          "example": "Blink Dagger",
+          "type": "string"
+        },
+        "quality": {
+          "example": "component",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ItemsResponse": {
+      "properties": {
+        "count": {
+          "example": 50,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/opendota.ItemSummary"
+          },
+          "type": "array"
+        },
+        "qualities": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "total": {
+          "example": 501,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.League": {
+      "properties": {
+        "banner": {
+          "example": "https://cdn.opendota.com/leagues/20395.png",
+          "type": "string"
+        },
+        "id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "name": {
+          "example": "PARI UNIVERSE by FISSURE",
+          "type": "string"
+        },
+        "ticket": {
+          "example": "DPC2023",
+          "type": "string"
+        },
+        "tier": {
+          "example": "professional",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LeagueDetailResponse": {
+      "properties": {
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "league": {
+          "$ref": "#/definitions/opendota.League"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/opendota.Team"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LeagueMatch": {
+      "properties": {
+        "dire_name": {
+          "example": "LEGION",
+          "type": "string"
+        },
+        "dire_score": {
+          "example": 9,
+          "type": "integer"
+        },
+        "dire_team_id": {
+          "example": 10291652,
+          "type": "integer"
+        },
+        "duration_seconds": {
+          "example": 2052,
+          "type": "integer"
+        },
+        "league_id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "match_id": {
+          "example": 9063495955,
+          "type": "integer"
+        },
+        "radiant_name": {
+          "example": "BETBOOM TEAM",
+          "type": "string"
+        },
+        "radiant_score": {
+          "example": 32,
+          "type": "integer"
+        },
+        "radiant_team_id": {
+          "example": 8255888,
+          "type": "integer"
+        },
+        "radiant_win": {
+          "example": true,
+          "type": "boolean"
+        },
+        "series_id": {
+          "example": 1160235,
+          "type": "integer"
+        },
+        "series_type": {
+          "example": 3,
+          "type": "integer"
+        },
+        "start_time": {
+          "example": "2026-10-26T20:56:07Z",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LeagueMatchIDsResponse": {
+      "properties": {
+        "count": {
+          "example": 45,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "league_id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "match_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LeagueMatchesResponse": {
+      "properties": {
+        "count": {
+          "example": 45,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "league_id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/opendota.LeagueMatch"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team_id": {
+          "example": 8255888,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LeaguesResponse": {
+      "properties": {
+        "count": {
+          "example": 10411,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "leagues": {
+          "items": {
+            "$ref": "#/definitions/opendota.League"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "tier_filter": {
+          "example": "professional",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LiveMatch": {
+      "properties": {
+        "delay_seconds": {
+          "example": 120,
+          "type": "integer"
+        },
+        "dire_name": {
+          "example": "Team Dire",
+          "type": "string"
+        },
+        "dire_score": {
+          "example": 26,
+          "type": "integer"
+        },
+        "game_time_seconds": {
+          "example": 1820,
+          "type": "integer"
+        },
+        "last_update_time": {
+          "example": 1793055400,
+          "type": "integer"
+        },
+        "league_id": {
+          "example": 19350,
+          "type": "integer"
+        },
+        "match_id": {
+          "example": 9063586855,
+          "type": "integer"
+        },
+        "players": {
+          "items": {
+            "$ref": "#/definitions/opendota.LivePlayer"
+          },
+          "type": "array"
+        },
+        "radiant_lead": {
+          "example": -500,
+          "type": "integer"
+        },
+        "radiant_name": {
+          "example": "Team Radiant",
+          "type": "string"
+        },
+        "radiant_score": {
+          "example": 31,
+          "type": "integer"
+        },
+        "spectators": {
+          "example": 24,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LiveMatchesResponse": {
+      "properties": {
+        "count": {
+          "example": 1,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/opendota.LiveMatch"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.LivePlayer": {
+      "properties": {
+        "hero_id": {
+          "example": 93,
+          "type": "integer"
+        },
+        "name": {
+          "example": "player-name",
+          "type": "string"
+        },
+        "team_code": {
+          "enum": [
+            0,
+            1
+          ],
+          "example": 0,
+          "type": "integer"
+        },
+        "team_slot": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "example": 1,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.MatchDetail": {
+      "properties": {
+        "dire": {
+          "$ref": "#/definitions/opendota.MatchTeam"
+        },
+        "dire_score": {
+          "example": 9,
+          "type": "integer"
+        },
+        "duration_seconds": {
+          "example": 2052,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "league_id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "league_name": {
+          "example": "PARI UNIVERSE by FISSURE",
+          "type": "string"
+        },
+        "match_id": {
+          "example": 9063495955,
+          "type": "integer"
+        },
+        "patch": {
+          "example": 59,
+          "type": "integer"
+        },
+        "players": {
+          "items": {
+            "$ref": "#/definitions/opendota.MatchPlayer"
+          },
+          "type": "array"
+        },
+        "radiant": {
+          "$ref": "#/definitions/opendota.MatchTeam"
+        },
+        "radiant_score": {
+          "example": 32,
+          "type": "integer"
+        },
+        "radiant_win": {
+          "example": true,
+          "type": "boolean"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "start_time": {
+          "example": "2026-10-26T20:56:07Z",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.MatchPlayer": {
+      "properties": {
+        "assists": {
+          "example": 16,
+          "type": "integer"
+        },
+        "deaths": {
+          "example": 1,
+          "type": "integer"
+        },
+        "denies": {
+          "example": 12,
+          "type": "integer"
+        },
+        "gold_per_min": {
+          "example": 656,
+          "type": "integer"
+        },
+        "hero_damage": {
+          "example": 24331,
+          "type": "integer"
+        },
+        "hero_id": {
+          "example": 93,
+          "type": "integer"
+        },
+        "is_radiant": {
+          "example": true,
+          "type": "boolean"
+        },
+        "kills": {
+          "example": 5,
+          "type": "integer"
+        },
+        "last_hits": {
+          "example": 287,
+          "type": "integer"
+        },
+        "level": {
+          "example": 28,
+          "type": "integer"
+        },
+        "name": {
+          "example": "player-name",
+          "type": "string"
+        },
+        "net_worth": {
+          "example": 21553,
+          "type": "integer"
+        },
+        "tower_damage": {
+          "example": 1234,
+          "type": "integer"
+        },
+        "xp_per_min": {
+          "example": 781,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.MatchTeam": {
+      "properties": {
+        "id": {
+          "example": 8255888,
+          "type": "integer"
+        },
+        "logo_url": {
+          "example": "https://cdn.opendota.com/team-logo.png",
+          "type": "string"
+        },
+        "name": {
+          "example": "BETBOOM TEAM",
+          "type": "string"
+        },
+        "tag": {
+          "example": "BB",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PatchAbilityChange": {
+      "properties": {
+        "key": {
+          "example": "abaddon_death_coil",
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PatchHeroChange": {
+      "properties": {
+        "abilities": {
+          "items": {
+            "$ref": "#/definitions/opendota.PatchAbilityChange"
+          },
+          "type": "array"
+        },
+        "general": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "hero_id": {
+          "example": 102,
+          "type": "integer"
+        },
+        "key": {
+          "example": "abaddon",
+          "type": "string"
+        },
+        "name": {
+          "example": "Abaddon",
+          "type": "string"
+        },
+        "talents": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PatchIndexEntry": {
+      "properties": {
+        "heroes_changed": {
+          "example": 96,
+          "type": "integer"
+        },
+        "items_changed": {
+          "example": 60,
+          "type": "integer"
+        },
+        "patch": {
+          "example": "7_38",
+          "type": "string"
+        },
+        "version": {
+          "example": "7.38",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PatchItemChange": {
+      "properties": {
+        "key": {
+          "example": "blink",
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PatchNotesResponse": {
+      "properties": {
+        "count": {
+          "example": 116,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "general": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "heroes": {
+          "items": {
+            "$ref": "#/definitions/opendota.PatchHeroChange"
+          },
+          "type": "array"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/opendota.PatchItemChange"
+          },
+          "type": "array"
+        },
+        "misc": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "patch": {
+          "example": "7_38",
+          "type": "string"
+        },
+        "patches": {
+          "items": {
+            "$ref": "#/definitions/opendota.PatchIndexEntry"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "version": {
+          "example": "7.38",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PickWin": {
+      "properties": {
+        "bans": {
+          "example": 36,
+          "type": "integer"
+        },
+        "picks": {
+          "example": 13,
+          "type": "integer"
+        },
+        "win_rate_percent": {
+          "example": 53.85,
+          "type": "number"
+        },
+        "wins": {
+          "example": 7,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PickedHero": {
+      "properties": {
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "localized_name": {
+          "example": "Anti-Mage",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ProMatch": {
+      "properties": {
+        "dire_name": {
+          "example": "LEGION",
+          "type": "string"
+        },
+        "dire_score": {
+          "example": 9,
+          "type": "integer"
+        },
+        "dire_team_id": {
+          "example": 10291652,
+          "type": "integer"
+        },
+        "duration_seconds": {
+          "example": 2052,
+          "type": "integer"
+        },
+        "league_id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "league_name": {
+          "example": "PARI UNIVERSE by FISSURE",
+          "type": "string"
+        },
+        "match_id": {
+          "example": 9063495955,
+          "type": "integer"
+        },
+        "radiant_name": {
+          "example": "BETBOOM TEAM",
+          "type": "string"
+        },
+        "radiant_score": {
+          "example": 32,
+          "type": "integer"
+        },
+        "radiant_team_id": {
+          "example": 8255888,
+          "type": "integer"
+        },
+        "radiant_win": {
+          "example": true,
+          "type": "boolean"
+        },
+        "series_id": {
+          "example": 1160235,
+          "type": "integer"
+        },
+        "start_time": {
+          "example": "2026-10-26T20:56:07Z",
+          "type": "string"
+        },
+        "version": {
+          "example": 22,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ProMatchesResponse": {
+      "properties": {
+        "count": {
+          "example": 100,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/opendota.ProMatch"
+          },
+          "type": "array"
+        },
+        "next_less_than_match_id": {
+          "example": 9055842613,
+          "type": "integer"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ProPlayer": {
+      "properties": {
+        "country_code": {
+          "example": "US",
+          "type": "string"
+        },
+        "is_pro": {
+          "example": true,
+          "type": "boolean"
+        },
+        "name": {
+          "example": "player-name",
+          "type": "string"
+        },
+        "persona_name": {
+          "example": "Player Name",
+          "type": "string"
+        },
+        "team_id": {
+          "example": 8255888,
+          "type": "integer"
+        },
+        "team_name": {
+          "example": "BETBOOM TEAM",
+          "type": "string"
+        },
+        "team_tag": {
+          "example": "BETBOOM",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ProPlayersResponse": {
+      "properties": {
+        "count": {
+          "example": 1,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "limit": {
+          "example": 50,
+          "type": "integer"
+        },
+        "next_offset": {
+          "example": 50,
+          "type": "integer"
+        },
+        "offset": {
+          "example": 0,
+          "type": "integer"
+        },
+        "players": {
+          "items": {
+            "$ref": "#/definitions/opendota.ProPlayer"
+          },
+          "type": "array"
+        },
+        "q": {
+          "example": "player",
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team_id": {
+          "example": 8255888,
+          "type": "integer"
+        },
+        "total_count": {
+          "example": 1,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PublicMatchRow": {
+      "properties": {
+        "avg_rank_medal": {
+          "example": "Divine",
+          "type": "string"
+        },
+        "avg_rank_tier": {
+          "example": 71,
+          "type": "integer"
+        },
+        "cluster": {
+          "example": 171,
+          "type": "integer"
+        },
+        "dire_heroes": {
+          "items": {
+            "$ref": "#/definitions/opendota.PickedHero"
+          },
+          "type": "array"
+        },
+        "duration_seconds": {
+          "example": 1329,
+          "type": "integer"
+        },
+        "game_mode": {
+          "example": 22,
+          "type": "integer"
+        },
+        "lobby_type": {
+          "example": 0,
+          "type": "integer"
+        },
+        "match_id": {
+          "example": 9066504584,
+          "type": "integer"
+        },
+        "radiant_heroes": {
+          "items": {
+            "$ref": "#/definitions/opendota.PickedHero"
+          },
+          "type": "array"
+        },
+        "radiant_win": {
+          "example": true,
+          "type": "boolean"
+        },
+        "ranked_players": {
+          "example": 6,
+          "type": "integer"
+        },
+        "start_time": {
+          "example": "2026-10-29T01:16:41Z",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.PublicMatchesResponse": {
+      "properties": {
+        "count": {
+          "example": 100,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/opendota.PublicMatchRow"
+          },
+          "type": "array"
+        },
+        "max_rank": {
+          "example": 85,
+          "type": "integer"
+        },
+        "min_rank": {
+          "example": 71,
+          "type": "integer"
+        },
+        "next_less_than_match_id": {
+          "example": 9066000000,
+          "type": "integer"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.RankBracket": {
+      "properties": {
+        "bracket": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "example": 5,
+          "type": "integer"
+        },
+        "name": {
+          "enum": [
+            "Herald",
+            "Guardian",
+            "Crusader",
+            "Archon",
+            "Legend",
+            "Ancient",
+            "Divine",
+            "Immortal"
+          ],
+          "example": "Legend",
+          "type": "string"
+        },
+        "picks": {
+          "example": 173376,
+          "type": "integer"
+        },
+        "win_rate_percent": {
+          "example": 51.23,
+          "type": "number"
+        },
+        "wins": {
+          "example": 88824,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.RankTierRow": {
+      "properties": {
+        "cumulative_percent": {
+          "example": 46.9,
+          "type": "number"
+        },
+        "cumulative_players": {
+          "example": 4100000,
+          "type": "integer"
+        },
+        "medal": {
+          "example": "Legend",
+          "type": "string"
+        },
+        "players": {
+          "example": 512000,
+          "type": "integer"
+        },
+        "rank_tier": {
+          "example": 54,
+          "type": "integer"
+        },
+        "share_percent": {
+          "example": 5.85,
+          "type": "number"
+        },
+        "stars": {
+          "example": 4,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.RecordRow": {
+      "properties": {
+        "hero_id": {
+          "example": 42,
+          "type": "integer"
+        },
+        "hero_name": {
+          "example": "Wraith King",
+          "type": "string"
+        },
+        "match_id": {
+          "example": 9062756621,
+          "type": "integer"
+        },
+        "rank": {
+          "example": 1,
+          "type": "integer"
+        },
+        "score": {
+          "example": 114,
+          "type": "integer"
+        },
+        "start_time": {
+          "example": "2026-10-24T10:11:37Z",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.RecordsResponse": {
+      "properties": {
+        "count": {
+          "example": 100,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "field": {
+          "example": "kills",
+          "type": "string"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/definitions/opendota.RecordRow"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ScenarioRow": {
+      "properties": {
+        "games": {
+          "example": 1023,
+          "type": "integer"
+        },
+        "hero_id": {
+          "example": 1,
+          "type": "integer"
+        },
+        "hero_name": {
+          "example": "Anti-Mage",
+          "type": "string"
+        },
+        "is_radiant": {
+          "example": true,
+          "type": "boolean"
+        },
+        "item": {
+          "example": "bfury",
+          "type": "string"
+        },
+        "lane_role": {
+          "example": 2,
+          "type": "integer"
+        },
+        "region_id": {
+          "example": 3,
+          "type": "integer"
+        },
+        "scenario": {
+          "example": "courier_kill",
+          "type": "string"
+        },
+        "time_seconds": {
+          "example": 900,
+          "type": "integer"
+        },
+        "win_rate_percent": {
+          "example": 49.76,
+          "type": "number"
+        },
+        "wins": {
+          "example": 509,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.ScenariosResponse": {
+      "properties": {
+        "count": {
+          "example": 7,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "item-timings",
+            "lane-roles",
+            "misc"
+          ],
+          "example": "item-timings",
+          "type": "string"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/definitions/opendota.ScenarioRow"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "timings": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "total": {
+          "example": 1600,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.Team": {
+      "properties": {
+        "delta": {
+          "example": 4.2,
+          "type": "number"
+        },
+        "id": {
+          "example": 8255888,
+          "type": "integer"
+        },
+        "last_match_id": {
+          "example": 9063495955,
+          "type": "integer"
+        },
+        "last_match_time": {
+          "example": "2026-10-26T20:56:07Z",
+          "type": "string"
+        },
+        "logo_url": {
+          "example": "https://cdn.opendota.com/team-logo.png",
+          "type": "string"
+        },
+        "losses": {
+          "example": 559,
+          "type": "integer"
+        },
+        "name": {
+          "example": "BETBOOM TEAM",
+          "type": "string"
+        },
+        "rating": {
+          "example": 1271.94,
+          "type": "number"
+        },
+        "tag": {
+          "example": "BETBOOM",
+          "type": "string"
+        },
+        "wins": {
+          "example": 707,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.TeamHeroesResponse": {
+      "properties": {
+        "count": {
+          "example": 127,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "heroes": {
+          "items": {
+            "$ref": "#/definitions/opendota.HeroRecord"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team_id": {
+          "example": 8255888,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.TeamMatch": {
+      "properties": {
+        "dire_score": {
+          "example": 9,
+          "type": "integer"
+        },
+        "duration_seconds": {
+          "example": 2052,
+          "type": "integer"
+        },
+        "league_id": {
+          "example": 20395,
+          "type": "integer"
+        },
+        "league_name": {
+          "example": "PARI UNIVERSE by FISSURE",
+          "type": "string"
+        },
+        "match_id": {
+          "example": 9063495955,
+          "type": "integer"
+        },
+        "opposing_team_id": {
+          "example": 10291652,
+          "type": "integer"
+        },
+        "opposing_team_logo_url": {
+          "example": "https://cdn.opendota.com/team-logo.png",
+          "type": "string"
+        },
+        "opposing_team_name": {
+          "example": "LEGION",
+          "type": "string"
+        },
+        "radiant": {
+          "example": true,
+          "type": "boolean"
+        },
+        "radiant_score": {
+          "example": 32,
+          "type": "integer"
+        },
+        "radiant_win": {
+          "example": true,
+          "type": "boolean"
+        },
+        "start_time": {
+          "example": "2026-10-26T20:56:07Z",
+          "type": "string"
+        },
+        "team_win": {
+          "example": true,
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.TeamMatchesResponse": {
+      "properties": {
+        "count": {
+          "example": 1266,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/opendota.TeamMatch"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team_id": {
+          "example": 8255888,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.TeamPlayer": {
+      "properties": {
+        "games_played": {
+          "example": 1014,
+          "type": "integer"
+        },
+        "is_current_team_member": {
+          "example": true,
+          "type": "boolean"
+        },
+        "name": {
+          "example": "Save-",
+          "type": "string"
+        },
+        "wins": {
+          "example": 590,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.TeamPlayersResponse": {
+      "properties": {
+        "count": {
+          "example": 28,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "players": {
+          "items": {
+            "$ref": "#/definitions/opendota.TeamPlayer"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team_id": {
+          "example": 8255888,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.TeamResponse": {
+      "properties": {
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team": {
+          "$ref": "#/definitions/opendota.Team"
+        }
+      },
+      "type": "object"
+    },
+    "opendota.TeamsResponse": {
+      "properties": {
+        "count": {
+          "example": 1000,
+          "type": "integer"
+        },
+        "fetched_at": {
+          "example": "2026-10-27T10:00:00Z",
+          "type": "string"
+        },
+        "next_page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "page": {
+          "example": 0,
+          "type": "integer"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/opendota.Team"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.crawlora.net",
+  "info": {
+    "contact": {
+      "email": "support@crawlora.net",
+      "name": "API Support",
+      "url": "https://crawlora.net"
+    },
+    "description": "Crawlora is a hosted web-data and SERP API: call documented REST endpoints and get normalized JSON instead of HTML to parse — across search/SERP, maps and local, e-commerce, app stores, social, media and finance. One API key; Crawlora runs the proxy rotation, headless browsers and parsing behind the scenes. Billed pay-on-success: charged only on a successful 2xx response, 1-10 credits per call, with a free tier of 2,000 credits per month and no card. A hosted MCP server (mcp.crawlora.net/mcp) exposes the same catalog as agent tools. Search endpoints accept `q` as a universal alias for whichever search-term parameter they document (`query`, `term`, `keyword`, or Amazon's `k`), so one parameter name works across the whole catalog; an explicitly supplied documented name always wins.",
+    "license": {
+      "name": "Crawlora Terms of Service",
+      "url": "https://crawlora.net/terms"
+    },
+    "termsOfService": "https://crawlora.net/terms",
+    "title": "Crawlora API",
+    "version": "1.2",
+    "x-logo": {
+      "altText": "Crawlora",
+      "backgroundColor": "#FFFFFF",
+      "url": "https://raw.githubusercontent.com/Crawlora-org/crawlora-mcp/main/assets/logo-400x400.png"
+    }
+  },
+  "paths": {
+    "/opendota/abilities": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns Dota 2 abilities from OpenDota's constants table as compact summaries (key, display name, behavior, target team and type, damage type, dispellable, BKB pierce, cooldown, mana cost, innate flag, description), sorted by key. Internal helper entries without a display name are skipped. `q` searches the key and display name.",
+        "operationId": "opendota-abilities",
+        "parameters": [
+          {
+            "description": "Case-insensitive search on the ability key or display name, for example blink",
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          },
+          {
+            "description": "Number of abilities to return, 1 to 500; defaults to 50",
+            "in": "query",
+            "maximum": 500,
+            "minimum": 1,
+            "name": "limit",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.AbilitiesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 ability reference",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/benchmarks": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns a Dota 2 hero's benchmark percentiles from OpenDota's public games: for each of ten per-minute metrics (`gold_per_min`, `xp_per_min`, `kills_per_min`, `deaths_per_min`, `assists_per_min`, `last_hits_per_min`, `denies_per_min`, `hero_damage_per_min`, `hero_healing_per_min`, `tower_damage`) the value at percentiles 0.1 to 0.99, sorted by percentile. An unknown hero id returns 404.",
+        "operationId": "opendota-benchmarks",
+        "parameters": [
+          {
+            "description": "Positive hero ID from opendota-heroes",
+            "in": "query",
+            "name": "hero_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 1
+          },
+          {
+            "description": "Rank bracket 1 (Herald) to 8 (Immortal) to benchmark against; omit for all ranks",
+            "in": "query",
+            "maximum": 8,
+            "minimum": 1,
+            "name": "bracket",
+            "type": "integer"
+          },
+          {
+            "description": "Role of the games counted; one of core, support; omit for all roles",
+            "enum": [
+              "core",
+              "support"
+            ],
+            "in": "query",
+            "name": "role",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.BenchmarksResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 hero benchmarks by percentile",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/constants": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one OpenDota lookup table as a sorted list of `id`/`name` entries, used to decode ids in match data: game modes and lobby types (with `balanced`), patches (with release `date`), regions, server clusters (`value` is the region id), item and ability ids, permanent buff ids, experience thresholds per level (`value`) countries (`id` is the ISO code), order types (`order_types`, the unit order names) player slot colors (`player_colors`, hex colors), chat wheel phrases (`chat_wheel`, `name` is the label and `text` the message), item rarity colors (`item_colors`, `text` is the hex color), neutral ancient creeps (`ancients`) and skillshot abilities (`skillshots`). `resource` is one of `game_mode`, `lobby_type`, `patch`, `region`, `cluster`, `item_ids`, `ability_ids`, `permanent_buffs`, `xp_level`, `countries`.",
+        "operationId": "opendota-constants",
+        "parameters": [
+          {
+            "description": "Lookup table; one of game_mode, lobby_type, patch, region, cluster, item_ids, ability_ids, permanent_buffs, xp_level, countries, order_types, player_colors, chat_wheel, item_colors, ancients, skillshots",
+            "enum": [
+              "game_mode",
+              "lobby_type",
+              "patch",
+              "region",
+              "cluster",
+              "item_ids",
+              "ability_ids",
+              "permanent_buffs",
+              "xp_level",
+              "countries",
+              "order_types",
+              "player_colors",
+              "chat_wheel",
+              "item_colors",
+              "ancients",
+              "skillshots"
+            ],
+            "in": "query",
+            "name": "resource",
+            "required": true,
+            "type": "string",
+            "x-example": "game_mode"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.ConstantsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 id lookup tables",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/find-matches": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns recent public Dota 2 matches in which the given heroes were on team A and/or team B, with both full lineups (radiant and dire), whether Radiant won, and which side the requested team A heroes were on and whether they won. Provide at least one hero id in total; each side takes up to 5 comma-separated hero ids from opendota-heroes. Unknown or repeated hero ids return an invalid-parameter error.",
+        "operationId": "opendota-find-matches",
+        "parameters": [
+          {
+            "description": "Comma-separated hero ids (up to 5) that must be on team A",
+            "in": "query",
+            "name": "team_a",
+            "type": "string",
+            "x-example": "1,2"
+          },
+          {
+            "description": "Comma-separated hero ids (up to 5) that must be on team B",
+            "in": "query",
+            "name": "team_b",
+            "type": "string",
+            "x-example": "3"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.FindMatchesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 matches by hero lineup",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/hero-descriptions": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns, for every Dota 2 hero or for one `hero_id`, what Aghanim's Scepter and Aghanim's Shard do: whether each upgrade exists, its description, the skill it changes and whether it adds a new skill. `include_lore=true` adds each hero's lore text (about 155 KB for all heroes), so it is off by default. An unknown hero id returns not found. Take `hero_id` from opendota-heroes.",
+        "operationId": "opendota-hero-descriptions",
+        "parameters": [
+          {
+            "description": "Positive hero id from opendota-heroes; omit it for all heroes",
+            "in": "query",
+            "minimum": 1,
+            "name": "hero_id",
+            "type": "integer",
+            "x-example": 1
+          },
+          {
+            "description": "true adds each hero's lore text; defaults to false",
+            "in": "query",
+            "name": "include_lore",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.HeroDescriptionsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 Aghanim's Scepter and Shard descriptions",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/hero-durations": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns a hero's games and wins grouped by game length in five-minute bins (`start_minute` is the bin's first minute), sorted by length, to show whether the hero is stronger early or late. An unknown hero id returns not found.",
+        "operationId": "opendota-hero-durations",
+        "parameters": [
+          {
+            "description": "Positive hero ID from opendota-heroes",
+            "in": "query",
+            "name": "hero_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 1
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.HeroDurationsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 hero win rate by game duration",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/hero-items": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the items players buy on a hero in four phases (`start_game`, `early_game`, `mid_game`, `late_game`), each sorted by purchase count, with item ids resolved to internal names such as `power_treads` through the item-id table. An unknown hero id returns not found.",
+        "operationId": "opendota-hero-items",
+        "parameters": [
+          {
+            "description": "Positive hero ID from opendota-heroes",
+            "in": "query",
+            "name": "hero_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 1
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.HeroItemsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 hero item popularity",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/hero-matches": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns recent professional and public matches in which a hero was played (about 100), each with the side it played, whether it won, its kills, deaths and assists, duration and league when there is one. Players' account ids are not returned. An unknown hero id returns not found.",
+        "operationId": "opendota-hero-matches",
+        "parameters": [
+          {
+            "description": "Positive hero ID from opendota-heroes",
+            "in": "query",
+            "name": "hero_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 1
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.HeroMatchesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 recent matches of a hero",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/hero-matchups": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns how often a hero faced each other hero in recent public games and how often it won, sorted by games played, with localized hero names and win-rate percentages. An unknown hero id returns not found.",
+        "operationId": "opendota-hero-matchups",
+        "parameters": [
+          {
+            "description": "Positive hero ID from opendota-heroes",
+            "in": "query",
+            "name": "hero_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 1
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.HeroMatchupsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 hero matchup records",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/hero-stats": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns every Dota 2 hero with base stats (health, mana, armor, attack range, move speed) and OpenDota's aggregate pick/win counts and win rates for professional games (with bans), public games, turbo, and each of the eight rank brackets (`Herald`, `Guardian`, `Crusader`, `Archon`, `Legend`, `Ancient`, `Divine`, `Immortal`). Filter by `primary_attr` (`agi`, `all`, `int`, `str`), `attack_type` (`Melee`, `Ranged`) and `role`, sort with `sort` and `desc`, and cap with `limit`. Win rates are percentages and are omitted when there are no picks.",
+        "operationId": "opendota-hero-stats",
+        "parameters": [
+          {
+            "description": "Primary attribute filter; one of agi, all, int, str",
+            "enum": [
+              "agi",
+              "all",
+              "int",
+              "str"
+            ],
+            "in": "query",
+            "name": "primary_attr",
+            "type": "string"
+          },
+          {
+            "description": "Attack type filter; one of Melee, Ranged",
+            "enum": [
+              "Melee",
+              "Ranged"
+            ],
+            "in": "query",
+            "name": "attack_type",
+            "type": "string"
+          },
+          {
+            "description": "Role filter; one of Carry, Disabler, Durable, Escape, Initiator, Nuker, Pusher, Support",
+            "enum": [
+              "Carry",
+              "Disabler",
+              "Durable",
+              "Escape",
+              "Initiator",
+              "Nuker",
+              "Pusher",
+              "Support"
+            ],
+            "in": "query",
+            "name": "role",
+            "type": "string"
+          },
+          {
+            "description": "Sort key; one of id, name, pro_pick, pro_win, pro_ban, pro_win_rate, pub_pick, pub_win, pub_win_rate, turbo_pick, turbo_win_rate; defaults to id",
+            "enum": [
+              "id",
+              "name",
+              "pro_pick",
+              "pro_win",
+              "pro_ban",
+              "pro_win_rate",
+              "pub_pick",
+              "pub_win",
+              "pub_win_rate",
+              "turbo_pick",
+              "turbo_win_rate"
+            ],
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "Sort descending (the default for every key except id and name)",
+            "in": "query",
+            "name": "desc",
+            "type": "boolean"
+          },
+          {
+            "description": "Number of heroes to return, 1 to 200; defaults to all",
+            "in": "query",
+            "maximum": 200,
+            "minimum": 1,
+            "name": "limit",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.HeroStatsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 hero pick and win statistics",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/heroes": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the live OpenDota hero lookup needed to resolve `hero_id` values in live and detailed match responses. It includes every current hero ID with its internal name, localized name, primary attribute (`agi`, `all`, `int`, or `str`) and attack type (`Melee` or `Ranged`).",
+        "operationId": "opendota-heroes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.HeroesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota hero directory",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/items": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns Dota 2 items from OpenDota's constants table as compact summaries (key, id, display name, quality, gold cost, behavior, cooldown, mana cost, components, active and passive abilities, numeric attributes), sorted by key. `q` searches the key and display name, `quality` filters by quality, and `qualities` lists the quality values present.",
+        "operationId": "opendota-items",
+        "parameters": [
+          {
+            "description": "Case-insensitive search on the item key or display name, for example blink",
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          },
+          {
+            "description": "Item quality from the qualities list in the response; currently artifact, common, component, consumable, consumable;laning, epic, rare, secret_shop",
+            "in": "query",
+            "name": "quality",
+            "type": "string"
+          },
+          {
+            "description": "Number of items to return, 1 to 500; defaults to 50",
+            "in": "query",
+            "maximum": 500,
+            "minimum": 1,
+            "name": "limit",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.ItemsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 item reference",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/league": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one league's name, tier (`amateur`, `excluded`, `premium`, `professional` or `unrated` when blank), ticket and banner, plus the teams that played in it with rating and record. An unknown league id returns not found.",
+        "operationId": "opendota-league",
+        "parameters": [
+          {
+            "description": "Positive OpenDota league ID from opendota-leagues",
+            "in": "query",
+            "name": "league_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 20395
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.LeagueDetailResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 league detail and teams",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/league-match-ids": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns match IDs for one league, including amateur leagues omitted from opendota_league_matches. An empty array is valid for a league with no matches. Copy an ID into opendota_match for match details.",
+        "operationId": "opendota-league-match-ids",
+        "parameters": [
+          {
+            "description": "Positive OpenDota league ID from opendota_leagues",
+            "format": "int64",
+            "in": "query",
+            "name": "league_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 20395
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.LeagueMatchIDsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota match IDs for one league",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/league-matches": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the complete match list supplied for one OpenDota league, including match ID, teams, scores, start time and series metadata. Optionally filter locally to matches involving one team; league_id and team_id are echoed. This source route is not paginated and can include completed or scheduled rows; use opendota_match for parsed player statistics.",
+        "operationId": "opendota-league-matches",
+        "parameters": [
+          {
+            "description": "Positive league ID from opendota_leagues",
+            "format": "int64",
+            "in": "query",
+            "name": "league_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 20395
+          },
+          {
+            "description": "Optional positive team ID; keeps matches where this team is Radiant or Dire",
+            "format": "int64",
+            "in": "query",
+            "name": "team_id",
+            "type": "integer",
+            "x-example": 8255888
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.LeagueMatchesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota matches for one league",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/leagues": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns every league ID and its source name, ticket, banner and tier. The source list is large and can include historical or excluded leagues. Filter `tier` locally; `unrated` selects source rows whose tier is blank. The response echoes tier_filter. Use a returned ID with opendota_league_matches.",
+        "operationId": "opendota-leagues",
+        "parameters": [
+          {
+            "description": "Optional exact source tier filter",
+            "enum": [
+              "amateur",
+              "excluded",
+              "premium",
+              "professional",
+              "unrated"
+            ],
+            "in": "query",
+            "name": "tier",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.LeaguesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota league directory",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/live": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns OpenDota's current top live Dota 2 games: match and league IDs, team names, score, game clock, net-worth lead, player names when exposed, raw hero IDs, the upstream team code (`0` or `1`), and team slot (`1`, `2`, `3`, `4`, or `5`). The source mixes public matchmaking with tournament games; `league_id` is `0` when no league is associated, so its presence alone does not certify a professional event. `delay_seconds` and `last_update_time` report source freshness. Live player K/D/A is not provided by this endpoint. Resolve `hero_id` values with opendota_heroes.",
+        "operationId": "opendota-live",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.LiveMatchesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota live games",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/match": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns a compact parsed match summary and player lines for one numeric OpenDota match ID. Copy the ID from opendota_live, opendota_pro_matches, opendota_league_matches, or opendota_league_match_ids. Replay-derived player data can be absent or delayed; a missing match ID returns not found. Steam account IDs, chat logs, replay salts and raw telemetry are not returned. `hero_id` is resolved with opendota_heroes.",
+        "operationId": "opendota-match",
+        "parameters": [
+          {
+            "description": "Positive OpenDota match ID from live, pro-match, league-match, or league-match-ID results",
+            "format": "int64",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-example": 9063495955
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.MatchDetail"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota match detail",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/patch-notes": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Without `patch`, lists every patch key OpenDota has notes for (from 7_06d to the current patch) in chronological order with the number of heroes and items changed. With `patch` (for example `7_38`), returns that patch's general notes, item changes and hero changes (general, talents and per-ability notes, with the hero id and name resolved).",
+        "operationId": "opendota-patch-notes",
+        "parameters": [
+          {
+            "description": "Patch key such as 7_38 or 7_06d; omit it to list every patch key",
+            "in": "query",
+            "name": "patch",
+            "type": "string",
+            "x-example": "7_38"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.PatchNotesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 patch notes",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/pro-matches": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns professional Dota 2 match summaries with match ID, teams, league, start time, duration, scores, winner and series metadata. OpenDota returns up to 100 rows per page. Set `less_than_match_id` to a positive match ID to fetch older results; use `next_less_than_match_id` from the response for the next page. An empty cursor page is the end of history. This is recent results, not an upcoming-match schedule. Use opendota_match with one returned match ID for parsed player statistics.",
+        "operationId": "opendota-pro-matches",
+        "parameters": [
+          {
+            "description": "Return professional matches with IDs lower than this positive match ID; copy next_less_than_match_id from the previous response",
+            "format": "int64",
+            "in": "query",
+            "name": "less_than_match_id",
+            "type": "integer",
+            "x-example": 9063495955
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.ProMatchesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota recent professional matches",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/pro-players": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns a sanitized, searchable page of the OpenDota pro-player roster with player names, country codes and team tags. The upstream sends an unfiltered roster without pagination; this endpoint caches it and applies team_id, q, limit and offset locally. q searches names, tags and country codes. Account IDs, Steam IDs, profile URLs and avatars are omitted.",
+        "operationId": "opendota-pro-players",
+        "parameters": [
+          {
+            "description": "Optional positive team ID from opendota_teams",
+            "format": "int64",
+            "in": "query",
+            "name": "team_id",
+            "type": "integer",
+            "x-example": 8255888
+          },
+          {
+            "description": "Case-insensitive substring in player/team names, team tags or country codes; maximum 200 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          },
+          {
+            "description": "Local page size, default 50, maximum 100",
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "x-example": 50
+          },
+          {
+            "description": "Zero-based local offset, default 0",
+            "in": "query",
+            "name": "offset",
+            "type": "integer",
+            "x-example": 0
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.ProPlayersResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota professional player roster",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/public-matches": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns about 100 recent ranked public Dota 2 matches with the heroes on each side, game mode, lobby type and average rank tier, optionally limited to a rank range. Rank tiers are the medal (1 Herald, 2 Guardian, 3 Crusader, 4 Archon, 5 Legend, 6 Ancient, 7 Divine, 8 Immortal) times ten plus stars 1 to 5. Page back with `less_than_match_id` set to the previous `next_less_than_match_id`. Players' account ids are not returned.",
+        "operationId": "opendota-public-matches",
+        "parameters": [
+          {
+            "description": "Lowest average rank tier, medal 1-8 times ten plus stars 1-5",
+            "enum": [
+              11,
+              12,
+              13,
+              14,
+              15,
+              21,
+              22,
+              23,
+              24,
+              25,
+              31,
+              32,
+              33,
+              34,
+              35,
+              41,
+              42,
+              43,
+              44,
+              45,
+              51,
+              52,
+              53,
+              54,
+              55,
+              61,
+              62,
+              63,
+              64,
+              65,
+              71,
+              72,
+              73,
+              74,
+              75,
+              81,
+              82,
+              83,
+              84,
+              85
+            ],
+            "in": "query",
+            "name": "min_rank",
+            "type": "integer"
+          },
+          {
+            "description": "Highest average rank tier, same form as min_rank; not below min_rank",
+            "enum": [
+              11,
+              12,
+              13,
+              14,
+              15,
+              21,
+              22,
+              23,
+              24,
+              25,
+              31,
+              32,
+              33,
+              34,
+              35,
+              41,
+              42,
+              43,
+              44,
+              45,
+              51,
+              52,
+              53,
+              54,
+              55,
+              61,
+              62,
+              63,
+              64,
+              65,
+              71,
+              72,
+              73,
+              74,
+              75,
+              81,
+              82,
+              83,
+              84,
+              85
+            ],
+            "in": "query",
+            "name": "max_rank",
+            "type": "integer"
+          },
+          {
+            "description": "Return matches older than this match id",
+            "in": "query",
+            "name": "less_than_match_id",
+            "type": "integer",
+            "x-example": 9066000000
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.PublicMatchesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 recent public matches by rank",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/rank-distribution": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns how OpenDota's rated players are distributed over Dota 2 rank tiers: for each `rank_tier` (the first digit is the medal, the second the stars) the medal name, stars, player count, cumulative count and the share and cumulative share in percent, sorted by tier.",
+        "operationId": "opendota-rank-distribution",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.DistributionsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 rank distribution",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/records": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the top 100 single-match records for one stat (`kills`, `deaths`, `assists`, `last_hits`, `denies`, `gold_per_min`, `xp_per_min`, `hero_damage`, `tower_damage`, `hero_healing`, `duration`): rank, match id, start time, hero (with name) and the record value. Use opendota-match with a returned match id.",
+        "operationId": "opendota-records",
+        "parameters": [
+          {
+            "description": "Record field; one of kills, deaths, assists, last_hits, denies, gold_per_min, xp_per_min, hero_damage, tower_damage, hero_healing, duration",
+            "enum": [
+              "kills",
+              "deaths",
+              "assists",
+              "last_hits",
+              "denies",
+              "gold_per_min",
+              "xp_per_min",
+              "hero_damage",
+              "tower_damage",
+              "hero_healing",
+              "duration"
+            ],
+            "in": "query",
+            "name": "field",
+            "required": true,
+            "type": "string",
+            "x-example": "kills"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.RecordsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 single-match record leaderboards",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/scenarios": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns OpenDota's scenario datasets as games, wins and win rate rows, most games first. `kind` selects `item-timings` (an item bought by a time for a hero), `lane-roles` (a hero in a lane role at a time) or `misc` (courier kill, first blood and chat scenarios by side and region). Filters are validated before any upstream call: `hero_id` and `item` apply to item-timings, `hero_id` and `lane_role` to lane-roles, `scenario` to misc.",
+        "operationId": "opendota-scenarios",
+        "parameters": [
+          {
+            "description": "Dataset; one of item-timings, lane-roles, misc",
+            "enum": [
+              "item-timings",
+              "lane-roles",
+              "misc"
+            ],
+            "in": "query",
+            "name": "kind",
+            "required": true,
+            "type": "string",
+            "x-example": "item-timings"
+          },
+          {
+            "description": "Positive hero ID from opendota-heroes; item-timings and lane-roles only",
+            "in": "query",
+            "name": "hero_id",
+            "type": "integer",
+            "x-example": 1
+          },
+          {
+            "description": "Item name from opendota-constants item_ids, for example bfury; item-timings only",
+            "in": "query",
+            "name": "item",
+            "type": "string"
+          },
+          {
+            "description": "Lane role 1 to 4 (1 safe lane, 2 mid, 3 off lane, 4 jungle); lane-roles only",
+            "in": "query",
+            "maximum": 4,
+            "minimum": 1,
+            "name": "lane_role",
+            "type": "integer"
+          },
+          {
+            "description": "Scenario; one of courier_kill, first_blood, neg_chat_1min, pos_chat_1min; misc only",
+            "enum": [
+              "courier_kill",
+              "first_blood",
+              "neg_chat_1min",
+              "pos_chat_1min"
+            ],
+            "in": "query",
+            "name": "scenario",
+            "type": "string"
+          },
+          {
+            "description": "Number of rows to return, 1 to 2000, most games first; defaults to all",
+            "in": "query",
+            "maximum": 2000,
+            "minimum": 1,
+            "name": "limit",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.ScenariosResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 scenario win rates",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/team": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns one team's OpenDota profile, tag, logo, rating, wins, losses and most recent match metadata.",
+        "operationId": "opendota-team",
+        "parameters": [
+          {
+            "description": "Positive OpenDota team ID from opendota_teams or a match response",
+            "format": "int64",
+            "in": "query",
+            "name": "team_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 8255888
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.TeamResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota team details",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/team-heroes": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the heroes a team has played with games, wins and win rate, sorted by games played. Heroes the team never played are omitted. An unknown team id returns not found.",
+        "operationId": "opendota-team-heroes",
+        "parameters": [
+          {
+            "description": "Positive OpenDota team ID from opendota-teams or a match response",
+            "in": "query",
+            "name": "team_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 8255888
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.TeamHeroesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 team hero pool",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/team-matches": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns a team's complete upstream match history with league, opponent, score and winner data. The source does not paginate this list; large histories can contain over a thousand rows. Use opendota_match for parsed player statistics.",
+        "operationId": "opendota-team-matches",
+        "parameters": [
+          {
+            "description": "Positive OpenDota team ID from opendota_teams or a match response",
+            "format": "int64",
+            "in": "query",
+            "name": "team_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 8255888
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.TeamMatchesResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota team match history",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/team-players": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the players who have played for a team with games played, wins and whether they are a current member, current members first. Steam account ids are not returned. An unknown team id returns not found.",
+        "operationId": "opendota-team-players",
+        "parameters": [
+          {
+            "description": "Positive OpenDota team ID from opendota-teams or a match response",
+            "in": "query",
+            "name": "team_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 8255888
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.TeamPlayersResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota Dota 2 team player history",
+        "tags": [
+          "opendota"
+        ]
+      }
+    },
+    "/opendota/teams": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns a zero-based page of OpenDota team records with team IDs, names, tags, ranking and recent-match metadata. OpenDota returns up to 1000 teams per page; use `next_page` while present. Use a team ID with opendota_team or opendota_team_matches.",
+        "operationId": "opendota-teams",
+        "parameters": [
+          {
+            "description": "Zero-based page index; defaults to 0",
+            "format": "int64",
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "x-example": 0
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/app.Response"
+                },
+                {
+                  "properties": {
+                    "data": {
+                      "$ref": "#/definitions/opendota.TeamsResponse"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "OpenDota team directory",
+        "tags": [
+          "opendota"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "opendota"
+    }
+  ]
+}
